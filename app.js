@@ -17,7 +17,7 @@ var selector = {
 // ** Data
 
 const github_paths = [
-  `https://raw.githubusercontent.com/davidrich27/gcreplay-viz/main`,
+  `https://raw.githubusercontent.com/matsengrp/gcreplay-viz/main`,
 ]
 const github_path = github_paths[0];
 const summary_db_path = `${github_path}/data/metadata/summary.json`;
@@ -335,15 +335,20 @@ class Event {
     my_iframe.src = url;
   }
 
-  static load_pdb() {
+  static load_pdb(filter = null) {
     // get field from database
-    const filter = {};
-    for (const key in selector) {
-      const value = selector[key].value;
-      if (value !== "") {
-        filter[key] = value;
+    console.log(`filter: ${filter}`)
+    if (!filter) {
+      console.log('filter NOT GIVEN')
+      filter = {};
+      for (const key in selector) {
+        const value = selector[key].value;
+        if (value !== "") {
+          filter[key] = value;
+        }
       }
     }
+
     const matches = summary_db.data.filter(item =>
       Object.entries(filter).every(([key, val]) => item[key] == val)
     );
@@ -433,5 +438,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // Event buttons
   sidebar_toggle_button.addEventListener('click', Event.sidebar_toggle);
-  pdb_inspect_button.addEventListener('click', Event.load_pdb);
+  pdb_inspect_button.addEventListener('click', () => Event.load_pdb());
+
+  // Pre-load data
+  Event.load_pdb({'pdbid': 'CGG_mean', 'chainid': 'H', 'metricid': 'metric'});
 });
