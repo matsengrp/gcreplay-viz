@@ -18,7 +18,8 @@ from utility import *
 # palette for binding
 DARK_PALETTE = ["#7570b3", "#808080"]  # original Dark2 pallete
 VISIBLE_PALETTE = ["#675ed6", "#808080"]  # more visible pallete
-COLOR_PALETTE = VISIBLE_PALETTE
+ALT_PALETTE = ["#6A5ACD", "#B22222", "#2E8B57"]
+COLOR_PALETTE = ALT_PALETTE
 COLOR_MAP = 'brg'
 # amino acid codes
 AA_ALPHABET = sorted(list("RKHDEQNSTYWFAILMVGPC"))
@@ -311,6 +312,8 @@ def main(args=sys.argv):
 
     metric_names = {
         # "all_metrics": ["bind_CGG", "expr", "delta_bind_CGG", "delta_expr", "n_bc_bind_CGG", "n_bc_expr", "n_libs_bind_CGG", "n_libs_expr", "single_nt"],
+        "binding": ["bind_CGG"],
+        "expression": ["expr"],
         "metric": ["bind_CGG", "expr"],
         "delta": ["delta_bind_CGG", "delta_expr"],
         "n_bc": ["n_bc_bind_CGG", "n_bc_expr"],
@@ -319,6 +322,8 @@ def main(args=sys.argv):
     }
     metric_full_names = {
         # "all_metrics": "All Binding/Expression metrics",
+        "binding": "Binding",
+        "expression": "Expression",
         "metric": "Binding/Expression",
         "delta": "Binding/Expression: Delta Change Relative to Wildtype",
         "n_bc": "Binding/Expression: Number of Barcodes",
@@ -401,11 +406,13 @@ def main(args=sys.argv):
 
             try:
                 # build dms-viz json
+                full_description = f"{pdb_prefix} :: {chain_str} :: {metric_full_name}"
                 dmsviz_path = f"{temp_dir}/{pdb_prefix}.{chain_str}.{metric_name}.dmsviz.json"
-                COLOR_PALETTE = generate_color_palette(
-                    n_colors=num_metrics, colormap=COLOR_MAP, as_hex=True)
+                # COLOR_PALETTE = generate_color_palette(
+                #     n_colors=num_metrics, colormap=COLOR_MAP, as_hex=True)
+                COLOR_PALETTE=ALT_PALETTE[:num_metrics]
                 configure_dms_viz(
-                    name=f"{pdb_prefix} :: {metric_full_name}",
+                    name=full_description,
                     plot_colors=COLOR_PALETTE,
                     metric="factor",
                     input_metric_path=metric_path,
@@ -423,7 +430,6 @@ def main(args=sys.argv):
                 summary_data["pdbid"].append(pdb_prefix)
                 summary_data["chainid"].append(chain_str)
                 summary_data["metricid"].append(metric_name)
-                full_description = f"{pdb_prefix} :: {chain_str} :: {metric_full_name}"
                 summary_data["description"].append(full_description)
 
             except Exception as e:
