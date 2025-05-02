@@ -10,8 +10,8 @@ const sidebar_toggle_button = document.getElementById('sidebarToggleButton');
 const alert_message_box = document.getElementById('loadedAlert');
 var selector = {
   'pdbid': document.getElementById('pdbidSelector'),
-  'metricid': document.getElementById('metricidSelector'),
   'chainid': document.getElementById('chainidSelector'),
+  'metric': document.getElementById('metricSelector'),
 };
 
 // ** Data
@@ -31,7 +31,7 @@ const sidebar_btn_txt = {
 var prompt = {
   'pdbid': 'Select by PDB',
   'chainid': 'Select by Chain ID',
-  'metricid': 'Select by Metric',
+  'metric': 'Select by Metric',
 };
 
 // Template for dms-viz.github.io query string.
@@ -437,12 +437,12 @@ document.addEventListener('DOMContentLoaded', async function () {
   // Populate data
   Event.populate_dropdown_from_data(selector['pdbid'], summary_db.data, 'pdbid', 'pdbid_long_name');
   Event.populate_dropdown_from_data(selector['chainid'], summary_db.data, 'chainid', 'chainid_long_name');
-  Event.populate_dropdown_from_data(selector['metricid'], summary_db.data, 'metric', 'metric_long_name');
+  Event.populate_dropdown_from_data(selector['metric'], summary_db.data, 'metric', 'metric_long_name');
 
   // Event buttons
   sidebar_toggle_button.addEventListener('click', Event.sidebar_toggle);
   pdb_inspect_button.addEventListener('click', () => Event.load_pdb());
 
   // Pre-load data
-  Event.load_pdb({ 'pdbid': 'CGG_mean', 'chainid': 'H', 'metricid': 'metric' });
+  Event.load_pdb({ 'pdbid': 'CGG_mean', 'chainid': 'H', 'metric': 'bind_expr' });
 });
