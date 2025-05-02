@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   // Populate data
   Event.populate_dropdown_from_data(selector['pdbid'], summary_db.data, 'pdbid', 'pdbid');
   Event.populate_dropdown_from_data(selector['chainid'], summary_db.data, 'chainid', 'chainid');
-  Event.populate_dropdown_from_data(selector['metricid'], summary_db.data, 'metricid', 'metric_full_name');
+  Event.populate_dropdown_from_data(selector['metricid'], summary_db.data, 'metricid', 'metric_long_name');
 
   // Event buttons
   sidebar_toggle_button.addEventListener('click', Event.sidebar_toggle);
