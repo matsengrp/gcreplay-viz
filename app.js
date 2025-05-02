@@ -412,6 +412,7 @@ class Event {
 
     // const unique_values = [...new Set(data.map(item => item[value_field]))].sort();
     const unique_rows = Event.get_first_unique_rows_by_column(data, value_field);
+    console.log(data)
     console.log(unique_rows)
 
     unique_rows.forEach(item => {
@@ -443,5 +444,5 @@ document.addEventListener('DOMContentLoaded', async function () {
   pdb_inspect_button.addEventListener('click', () => Event.load_pdb());
 
   // Pre-load data
-  // Event.load_pdb({'pdbid': 'CGG_mean', 'chainid': 'H', 'metricid': 'metric'});
+  Event.load_pdb({ 'pdbid': 'CGG_mean', 'chainid': 'H', 'metricid': 'metric' });
 });
