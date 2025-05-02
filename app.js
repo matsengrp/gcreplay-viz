@@ -365,11 +365,11 @@ class Event {
 
     // log request
     var alert_text = `Loading pdb...\n`
-    alert_text += `${HTMLHelper.ul_open()}`
-    alert_text += `<li> PDB: ${match['pdbid_long_name']} </li>\n`
-    alert_text += `<li> Chain ID: ${match['chainid_long_name']} </li>\n`
-    alert_text += `<li> Metric: ${match['metric_long_name']} </li>\n`
-    alert_text += `${HTMLHelper.ul_close()}`
+    alert_text += HTMLHelper.ul_open()
+    alert_text += HTMLHelper.li(`<b>PDB</b>: ${match['pdbid_long_name']}`);
+    alert_text += HTMLHelper.li(`<b>Chain ID</b>: ${match['chainid_long_name']}`);
+    alert_text += HTMLHelper.li(`<b>Metric</b>: ${match['metric_long_name']}`);
+    alert_text += HTMLHelper.ul_close();
     Event.alert_set_text(alert_text)
 
     console.log(my_dms_viz_request);
