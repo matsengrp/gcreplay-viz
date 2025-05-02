@@ -353,7 +353,7 @@ class Event {
       Object.entries(filter).every(([key, val]) => item[key] == val)
     );
     const match = matches[0];
-    console.log(`matches found: ${match.length}`)
+    console.log(`matches found: ${matches.length}`)
     console.log(matches)
 
     // get copy of request and fill fields
