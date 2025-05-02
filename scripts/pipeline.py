@@ -319,19 +319,19 @@ def main(args=sys.argv):
     print(f"metric_columns: {raw_metric_df.columns}")
 
     metric_names = {
-        # "all_metrics": ["bind_CGG", "expr", "delta_bind_CGG", "delta_expr", "n_bc_bind_CGG", "n_bc_expr", "n_libs_bind_CGG", "n_libs_expr", "single_nt"],
         "bind": ["bind_CGG"],
         "expr": ["expr"],
         "bind_expr": ["bind_CGG", "expr"],
+        "mut_abundance": ["mutation abundance"],
         "mut_rate": ["mutation rate"],
         "mut_enrichment": ["mutation enrichment"],
     }
     metric_long_names = {
-        # "all_metrics": "All Binding/Expression metrics",
         "bind": "Binding",
         "expr": "Expression",
         "bind_expr": "Binding/Expression",
         "delta": "Binding/Expression: Delta Change Relative to Wildtype",
+        "mut_abundance": "Mutation Abundance",
         "mut_rate": "Mutation Rate",
         "mut_enrichment": "Mutation Enrichment",
     }
@@ -415,8 +415,13 @@ def main(args=sys.argv):
 
             add_options = ""
             condition_options = '--condition "condition" '
-            condition_options += '--condition-name "Factor" '
+            condition_options += '--condition-name "Value" '
             add_options += condition_options
+            heatmap_min = metric_df["factor"].min()
+            heatmap_mean = metric_df["factor"].mean()
+            heatmap_max = metric_df["factor"].max()
+            heatmap_limit_options = f'--heatmap-limits {heatmap_min},{heatmap_mean},{heatmap_max} '
+            # add_options += heatmap_limit_options
 
             try:
                 # build dms-viz json
