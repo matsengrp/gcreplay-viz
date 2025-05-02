@@ -409,7 +409,7 @@ def main(args=sys.argv):
 
             add_options = ""
             condition_options = '--condition "condition" '
-            condition_options += '--condition-name "Metric" '
+            condition_options += '--condition-name "Factor" '
             add_options += condition_options
 
             try:
