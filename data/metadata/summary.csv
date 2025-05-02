@@ -1,71 +1,31 @@
-dmsviz_filepath,pdb_filepath,pdbid,chainid,metricid,metric_full_name,description
-CGG_mean.L.binding.dmsviz.json,CGG_mean.pdb,CGG_mean,L,binding,Binding,CGG_mean :: L :: Binding
-CGG_mean.L.expression.dmsviz.json,CGG_mean.pdb,CGG_mean,L,expression,Expression,CGG_mean :: L :: Expression
-CGG_mean.L.metric.dmsviz.json,CGG_mean.pdb,CGG_mean,L,metric,Binding/Expression,CGG_mean :: L :: Binding/Expression
-CGG_mean.L.delta.dmsviz.json,CGG_mean.pdb,CGG_mean,L,delta,Binding/Expression: Delta Change Relative to Wildtype,CGG_mean :: L :: Binding/Expression: Delta Change Relative to Wildtype
-CGG_mean.L.n_bc.dmsviz.json,CGG_mean.pdb,CGG_mean,L,n_bc,Binding/Expression: Number of Barcodes,CGG_mean :: L :: Binding/Expression: Number of Barcodes
-CGG_mean.L.n_libs.dmsviz.json,CGG_mean.pdb,CGG_mean,L,n_libs,Binding/Expression: Number of Libraries,CGG_mean :: L :: Binding/Expression: Number of Libraries
-CGG_mean.L.single_nt.dmsviz.json,CGG_mean.pdb,CGG_mean,L,single_nt,Binding/Expression: Mutation by Single Nucleotide Change,CGG_mean :: L :: Binding/Expression: Mutation by Single Nucleotide Change
-CGG_mean.H.binding.dmsviz.json,CGG_mean.pdb,CGG_mean,H,binding,Binding,CGG_mean :: H :: Binding
-CGG_mean.H.expression.dmsviz.json,CGG_mean.pdb,CGG_mean,H,expression,Expression,CGG_mean :: H :: Expression
-CGG_mean.H.metric.dmsviz.json,CGG_mean.pdb,CGG_mean,H,metric,Binding/Expression,CGG_mean :: H :: Binding/Expression
-CGG_mean.H.delta.dmsviz.json,CGG_mean.pdb,CGG_mean,H,delta,Binding/Expression: Delta Change Relative to Wildtype,CGG_mean :: H :: Binding/Expression: Delta Change Relative to Wildtype
-CGG_mean.H.n_bc.dmsviz.json,CGG_mean.pdb,CGG_mean,H,n_bc,Binding/Expression: Number of Barcodes,CGG_mean :: H :: Binding/Expression: Number of Barcodes
-CGG_mean.H.n_libs.dmsviz.json,CGG_mean.pdb,CGG_mean,H,n_libs,Binding/Expression: Number of Libraries,CGG_mean :: H :: Binding/Expression: Number of Libraries
-CGG_mean.H.single_nt.dmsviz.json,CGG_mean.pdb,CGG_mean,H,single_nt,Binding/Expression: Mutation by Single Nucleotide Change,CGG_mean :: H :: Binding/Expression: Mutation by Single Nucleotide Change
-CGG_max.L.binding.dmsviz.json,CGG_max.pdb,CGG_max,L,binding,Binding,CGG_max :: L :: Binding
-CGG_max.L.expression.dmsviz.json,CGG_max.pdb,CGG_max,L,expression,Expression,CGG_max :: L :: Expression
-CGG_max.L.metric.dmsviz.json,CGG_max.pdb,CGG_max,L,metric,Binding/Expression,CGG_max :: L :: Binding/Expression
-CGG_max.L.delta.dmsviz.json,CGG_max.pdb,CGG_max,L,delta,Binding/Expression: Delta Change Relative to Wildtype,CGG_max :: L :: Binding/Expression: Delta Change Relative to Wildtype
-CGG_max.L.n_bc.dmsviz.json,CGG_max.pdb,CGG_max,L,n_bc,Binding/Expression: Number of Barcodes,CGG_max :: L :: Binding/Expression: Number of Barcodes
-CGG_max.L.n_libs.dmsviz.json,CGG_max.pdb,CGG_max,L,n_libs,Binding/Expression: Number of Libraries,CGG_max :: L :: Binding/Expression: Number of Libraries
-CGG_max.L.single_nt.dmsviz.json,CGG_max.pdb,CGG_max,L,single_nt,Binding/Expression: Mutation by Single Nucleotide Change,CGG_max :: L :: Binding/Expression: Mutation by Single Nucleotide Change
-CGG_max.H.binding.dmsviz.json,CGG_max.pdb,CGG_max,H,binding,Binding,CGG_max :: H :: Binding
-CGG_max.H.expression.dmsviz.json,CGG_max.pdb,CGG_max,H,expression,Expression,CGG_max :: H :: Expression
-CGG_max.H.metric.dmsviz.json,CGG_max.pdb,CGG_max,H,metric,Binding/Expression,CGG_max :: H :: Binding/Expression
-CGG_max.H.delta.dmsviz.json,CGG_max.pdb,CGG_max,H,delta,Binding/Expression: Delta Change Relative to Wildtype,CGG_max :: H :: Binding/Expression: Delta Change Relative to Wildtype
-CGG_max.H.n_bc.dmsviz.json,CGG_max.pdb,CGG_max,H,n_bc,Binding/Expression: Number of Barcodes,CGG_max :: H :: Binding/Expression: Number of Barcodes
-CGG_max.H.n_libs.dmsviz.json,CGG_max.pdb,CGG_max,H,n_libs,Binding/Expression: Number of Libraries,CGG_max :: H :: Binding/Expression: Number of Libraries
-CGG_max.H.single_nt.dmsviz.json,CGG_max.pdb,CGG_max,H,single_nt,Binding/Expression: Mutation by Single Nucleotide Change,CGG_max :: H :: Binding/Expression: Mutation by Single Nucleotide Change
-CGG_75th.L.binding.dmsviz.json,CGG_75th.pdb,CGG_75th,L,binding,Binding,CGG_75th :: L :: Binding
-CGG_75th.L.expression.dmsviz.json,CGG_75th.pdb,CGG_75th,L,expression,Expression,CGG_75th :: L :: Expression
-CGG_75th.L.metric.dmsviz.json,CGG_75th.pdb,CGG_75th,L,metric,Binding/Expression,CGG_75th :: L :: Binding/Expression
-CGG_75th.L.delta.dmsviz.json,CGG_75th.pdb,CGG_75th,L,delta,Binding/Expression: Delta Change Relative to Wildtype,CGG_75th :: L :: Binding/Expression: Delta Change Relative to Wildtype
-CGG_75th.L.n_bc.dmsviz.json,CGG_75th.pdb,CGG_75th,L,n_bc,Binding/Expression: Number of Barcodes,CGG_75th :: L :: Binding/Expression: Number of Barcodes
-CGG_75th.L.n_libs.dmsviz.json,CGG_75th.pdb,CGG_75th,L,n_libs,Binding/Expression: Number of Libraries,CGG_75th :: L :: Binding/Expression: Number of Libraries
-CGG_75th.L.single_nt.dmsviz.json,CGG_75th.pdb,CGG_75th,L,single_nt,Binding/Expression: Mutation by Single Nucleotide Change,CGG_75th :: L :: Binding/Expression: Mutation by Single Nucleotide Change
-CGG_75th.H.binding.dmsviz.json,CGG_75th.pdb,CGG_75th,H,binding,Binding,CGG_75th :: H :: Binding
-CGG_75th.H.expression.dmsviz.json,CGG_75th.pdb,CGG_75th,H,expression,Expression,CGG_75th :: H :: Expression
-CGG_75th.H.metric.dmsviz.json,CGG_75th.pdb,CGG_75th,H,metric,Binding/Expression,CGG_75th :: H :: Binding/Expression
-CGG_75th.H.delta.dmsviz.json,CGG_75th.pdb,CGG_75th,H,delta,Binding/Expression: Delta Change Relative to Wildtype,CGG_75th :: H :: Binding/Expression: Delta Change Relative to Wildtype
-CGG_75th.H.n_bc.dmsviz.json,CGG_75th.pdb,CGG_75th,H,n_bc,Binding/Expression: Number of Barcodes,CGG_75th :: H :: Binding/Expression: Number of Barcodes
-CGG_75th.H.n_libs.dmsviz.json,CGG_75th.pdb,CGG_75th,H,n_libs,Binding/Expression: Number of Libraries,CGG_75th :: H :: Binding/Expression: Number of Libraries
-CGG_75th.H.single_nt.dmsviz.json,CGG_75th.pdb,CGG_75th,H,single_nt,Binding/Expression: Mutation by Single Nucleotide Change,CGG_75th :: H :: Binding/Expression: Mutation by Single Nucleotide Change
-expression_mean.L.binding.dmsviz.json,expression_mean.pdb,expression_mean,L,binding,Binding,expression_mean :: L :: Binding
-expression_mean.L.expression.dmsviz.json,expression_mean.pdb,expression_mean,L,expression,Expression,expression_mean :: L :: Expression
-expression_mean.L.metric.dmsviz.json,expression_mean.pdb,expression_mean,L,metric,Binding/Expression,expression_mean :: L :: Binding/Expression
-expression_mean.L.delta.dmsviz.json,expression_mean.pdb,expression_mean,L,delta,Binding/Expression: Delta Change Relative to Wildtype,expression_mean :: L :: Binding/Expression: Delta Change Relative to Wildtype
-expression_mean.L.n_bc.dmsviz.json,expression_mean.pdb,expression_mean,L,n_bc,Binding/Expression: Number of Barcodes,expression_mean :: L :: Binding/Expression: Number of Barcodes
-expression_mean.L.n_libs.dmsviz.json,expression_mean.pdb,expression_mean,L,n_libs,Binding/Expression: Number of Libraries,expression_mean :: L :: Binding/Expression: Number of Libraries
-expression_mean.L.single_nt.dmsviz.json,expression_mean.pdb,expression_mean,L,single_nt,Binding/Expression: Mutation by Single Nucleotide Change,expression_mean :: L :: Binding/Expression: Mutation by Single Nucleotide Change
-expression_mean.H.binding.dmsviz.json,expression_mean.pdb,expression_mean,H,binding,Binding,expression_mean :: H :: Binding
-expression_mean.H.expression.dmsviz.json,expression_mean.pdb,expression_mean,H,expression,Expression,expression_mean :: H :: Expression
-expression_mean.H.metric.dmsviz.json,expression_mean.pdb,expression_mean,H,metric,Binding/Expression,expression_mean :: H :: Binding/Expression
-expression_mean.H.delta.dmsviz.json,expression_mean.pdb,expression_mean,H,delta,Binding/Expression: Delta Change Relative to Wildtype,expression_mean :: H :: Binding/Expression: Delta Change Relative to Wildtype
-expression_mean.H.n_bc.dmsviz.json,expression_mean.pdb,expression_mean,H,n_bc,Binding/Expression: Number of Barcodes,expression_mean :: H :: Binding/Expression: Number of Barcodes
-expression_mean.H.n_libs.dmsviz.json,expression_mean.pdb,expression_mean,H,n_libs,Binding/Expression: Number of Libraries,expression_mean :: H :: Binding/Expression: Number of Libraries
-expression_mean.H.single_nt.dmsviz.json,expression_mean.pdb,expression_mean,H,single_nt,Binding/Expression: Mutation by Single Nucleotide Change,expression_mean :: H :: Binding/Expression: Mutation by Single Nucleotide Change
-IgY-CH2_EH2_final_real_space_refined_021.L.binding.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,binding,Binding,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding
-IgY-CH2_EH2_final_real_space_refined_021.L.expression.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,expression,Expression,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Expression
-IgY-CH2_EH2_final_real_space_refined_021.L.metric.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,metric,Binding/Expression,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding/Expression
-IgY-CH2_EH2_final_real_space_refined_021.L.delta.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,delta,Binding/Expression: Delta Change Relative to Wildtype,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding/Expression: Delta Change Relative to Wildtype
-IgY-CH2_EH2_final_real_space_refined_021.L.n_bc.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,n_bc,Binding/Expression: Number of Barcodes,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding/Expression: Number of Barcodes
-IgY-CH2_EH2_final_real_space_refined_021.L.n_libs.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,n_libs,Binding/Expression: Number of Libraries,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding/Expression: Number of Libraries
-IgY-CH2_EH2_final_real_space_refined_021.L.single_nt.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,single_nt,Binding/Expression: Mutation by Single Nucleotide Change,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding/Expression: Mutation by Single Nucleotide Change
-IgY-CH2_EH2_final_real_space_refined_021.H.binding.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,binding,Binding,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding
-IgY-CH2_EH2_final_real_space_refined_021.H.expression.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,expression,Expression,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Expression
-IgY-CH2_EH2_final_real_space_refined_021.H.metric.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,metric,Binding/Expression,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding/Expression
-IgY-CH2_EH2_final_real_space_refined_021.H.delta.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,delta,Binding/Expression: Delta Change Relative to Wildtype,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding/Expression: Delta Change Relative to Wildtype
-IgY-CH2_EH2_final_real_space_refined_021.H.n_bc.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,n_bc,Binding/Expression: Number of Barcodes,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding/Expression: Number of Barcodes
-IgY-CH2_EH2_final_real_space_refined_021.H.n_libs.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,n_libs,Binding/Expression: Number of Libraries,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding/Expression: Number of Libraries
-IgY-CH2_EH2_final_real_space_refined_021.H.single_nt.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,single_nt,Binding/Expression: Mutation by Single Nucleotide Change,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding/Expression: Mutation by Single Nucleotide Change
+dmsviz_filepath,pdb_filepath,pdbid,chainid,metricid,metric_long_name,description
+CGG_mean.L.bind.dmsviz.json,CGG_mean.pdb,CGG_mean,L,bind,Binding,CGG_mean :: L :: Binding
+CGG_mean.L.expr.dmsviz.json,CGG_mean.pdb,CGG_mean,L,expr,Expression,CGG_mean :: L :: Expression
+CGG_mean.L.bind_expr.dmsviz.json,CGG_mean.pdb,CGG_mean,L,bind_expr,Binding/Expression,CGG_mean :: L :: Binding/Expression
+CGG_mean.L.mut_rate.dmsviz.json,CGG_mean.pdb,CGG_mean,L,mut_rate,Mutation Rate,CGG_mean :: L :: Mutation Rate
+CGG_mean.L.mut_enrichment.dmsviz.json,CGG_mean.pdb,CGG_mean,L,mut_enrichment,Mutation Enrichment,CGG_mean :: L :: Mutation Enrichment
+CGG_mean.H.bind.dmsviz.json,CGG_mean.pdb,CGG_mean,H,bind,Binding,CGG_mean :: H :: Binding
+CGG_mean.H.expr.dmsviz.json,CGG_mean.pdb,CGG_mean,H,expr,Expression,CGG_mean :: H :: Expression
+CGG_mean.H.bind_expr.dmsviz.json,CGG_mean.pdb,CGG_mean,H,bind_expr,Binding/Expression,CGG_mean :: H :: Binding/Expression
+CGG_mean.H.mut_rate.dmsviz.json,CGG_mean.pdb,CGG_mean,H,mut_rate,Mutation Rate,CGG_mean :: H :: Mutation Rate
+CGG_mean.H.mut_enrichment.dmsviz.json,CGG_mean.pdb,CGG_mean,H,mut_enrichment,Mutation Enrichment,CGG_mean :: H :: Mutation Enrichment
+expression_mean.L.bind.dmsviz.json,expression_mean.pdb,expression_mean,L,bind,Binding,expression_mean :: L :: Binding
+expression_mean.L.expr.dmsviz.json,expression_mean.pdb,expression_mean,L,expr,Expression,expression_mean :: L :: Expression
+expression_mean.L.bind_expr.dmsviz.json,expression_mean.pdb,expression_mean,L,bind_expr,Binding/Expression,expression_mean :: L :: Binding/Expression
+expression_mean.L.mut_rate.dmsviz.json,expression_mean.pdb,expression_mean,L,mut_rate,Mutation Rate,expression_mean :: L :: Mutation Rate
+expression_mean.L.mut_enrichment.dmsviz.json,expression_mean.pdb,expression_mean,L,mut_enrichment,Mutation Enrichment,expression_mean :: L :: Mutation Enrichment
+expression_mean.H.bind.dmsviz.json,expression_mean.pdb,expression_mean,H,bind,Binding,expression_mean :: H :: Binding
+expression_mean.H.expr.dmsviz.json,expression_mean.pdb,expression_mean,H,expr,Expression,expression_mean :: H :: Expression
+expression_mean.H.bind_expr.dmsviz.json,expression_mean.pdb,expression_mean,H,bind_expr,Binding/Expression,expression_mean :: H :: Binding/Expression
+expression_mean.H.mut_rate.dmsviz.json,expression_mean.pdb,expression_mean,H,mut_rate,Mutation Rate,expression_mean :: H :: Mutation Rate
+expression_mean.H.mut_enrichment.dmsviz.json,expression_mean.pdb,expression_mean,H,mut_enrichment,Mutation Enrichment,expression_mean :: H :: Mutation Enrichment
+IgY-CH2_EH2_final_real_space_refined_021.L.bind.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,bind,Binding,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding
+IgY-CH2_EH2_final_real_space_refined_021.L.expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,expr,Expression,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Expression
+IgY-CH2_EH2_final_real_space_refined_021.L.bind_expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,bind_expr,Binding/Expression,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding/Expression
+IgY-CH2_EH2_final_real_space_refined_021.L.mut_rate.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,mut_rate,Mutation Rate,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Mutation Rate
+IgY-CH2_EH2_final_real_space_refined_021.L.mut_enrichment.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,mut_enrichment,Mutation Enrichment,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Mutation Enrichment
+IgY-CH2_EH2_final_real_space_refined_021.H.bind.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,bind,Binding,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding
+IgY-CH2_EH2_final_real_space_refined_021.H.expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,expr,Expression,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Expression
+IgY-CH2_EH2_final_real_space_refined_021.H.bind_expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,bind_expr,Binding/Expression,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding/Expression
+IgY-CH2_EH2_final_real_space_refined_021.H.mut_rate.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,mut_rate,Mutation Rate,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Mutation Rate
+IgY-CH2_EH2_final_real_space_refined_021.H.mut_enrichment.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,mut_enrichment,Mutation Enrichment,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Mutation Enrichment

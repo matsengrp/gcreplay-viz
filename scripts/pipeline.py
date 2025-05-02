@@ -15,6 +15,7 @@ from Bio.PDB import PDBParser,PDBIO
 from Bio.PDB.DSSP import DSSP
 from utility import *
 
+EXIT_ON_EXCEPTION = True
 # palette for binding
 DARK_PALETTE = ["#7570b3", "#808080"]  # original Dark2 pallete
 VISIBLE_PALETTE = ["#675ed6", "#808080"]  # more visible pallete
@@ -118,13 +119,16 @@ def metric_get_binding_df(pdb_df, metric_path, chainids=None, metric_names=None)
         raw_metric_df = raw_metric_df[raw_metric_df["chain"].isin(chainids)]
         raw_metric_df["site"] = [x for x in range(1,len(set(raw_metric_df['position']))+1) for _ in range(AA_COUNT)]
 
+    id_vars = ["site", "position", "position_IMGT", "chain", "wildtype", "mutant"]
+    # value_vars = ["single_nt",
+    #     "bind_CGG", "delta_bind_CGG", "n_bc_bind_CGG", "n_libs_bind_CGG",
+    #     "expr", "delta_expr", "n_bc_expr", "n_libs_expr"]
+    value_vars = [x for x in raw_metric_df.columns if x not in id_vars]
+
     metric_df = pd.melt(
         raw_metric_df,
-        id_vars=["site", "position", "position_IMGT", "chain", "wildtype", "mutant"],
-        # value_vars=["bind_CGG", "expr"],
-        value_vars=["single_nt",
-                    "bind_CGG", "delta_bind_CGG", "n_bc_bind_CGG", "n_libs_bind_CGG",
-                    "expr", "delta_expr", "n_bc_expr", "n_libs_expr"],
+        id_vars=id_vars,
+        value_vars=value_vars,
         var_name="condition",
         value_name="factor")
     metric_df["position_IMGT"] = metric_df["position_IMGT"].astype(int)
@@ -266,7 +270,7 @@ def main(args=sys.argv):
         "pdbid": [],
         "chainid": [],
         "metricid": [],
-        "metric_full_name": [],
+        "metric_long_name": [],
         "description": [],
     }
 
@@ -309,26 +313,25 @@ def main(args=sys.argv):
     # parse metric files
     input_metric_paths = glob.glob(f"{input_dir}/*.csv")
     input_metric_path = input_metric_paths[0]
+    raw_metric_df = pd.read_csv(input_metric_path)
+    print(f"metric_columns: {raw_metric_df.columns}")
 
     metric_names = {
         # "all_metrics": ["bind_CGG", "expr", "delta_bind_CGG", "delta_expr", "n_bc_bind_CGG", "n_bc_expr", "n_libs_bind_CGG", "n_libs_expr", "single_nt"],
-        "binding": ["bind_CGG"],
-        "expression": ["expr"],
-        "metric": ["bind_CGG", "expr"],
-        "delta": ["delta_bind_CGG", "delta_expr"],
-        "n_bc": ["n_bc_bind_CGG", "n_bc_expr"],
-        "n_libs": ["n_libs_bind_CGG", "n_libs_expr"],
-        "single_nt": ["single_nt"],
+        "bind": ["bind_CGG"],
+        "expr": ["expr"],
+        "bind_expr": ["bind_CGG", "expr"],
+        "mut_rate": ["mutation rate"],
+        "mut_enrichment": ["mutation enrichment"],
     }
-    metric_full_names = {
+    metric_long_names = {
         # "all_metrics": "All Binding/Expression metrics",
-        "binding": "Binding",
-        "expression": "Expression",
-        "metric": "Binding/Expression",
+        "bind": "Binding",
+        "expr": "Expression",
+        "bind_expr": "Binding/Expression",
         "delta": "Binding/Expression: Delta Change Relative to Wildtype",
-        "n_bc": "Binding/Expression: Number of Barcodes",
-        "n_libs": "Binding/Expression: Number of Libraries",
-        "single_nt": "Binding/Expression: Mutation by Single Nucleotide Change",
+        "mut_rate": "Mutation Rate",
+        "mut_enrichment": "Mutation Enrichment",
     }
 
     all_metric_dfs = {}
@@ -365,19 +368,24 @@ def main(args=sys.argv):
 
         for metric_name, metric_cols in metric_names.items():
             print(f"metric: {metric_name=} {metric_cols=}")
-            metric_full_name = metric_full_names[metric_name]
+            metric_long_name = metric_long_names[metric_name]
             metric_df = all_metric_dfs[chainid]
 
             # get number of metrics
             metric_df = metric_df[metric_df["condition"].isin(metric_cols)]
             metric_types = set(metric_df["condition"])
             num_metrics = len(metric_types)
+            print(f"{metric_types=}")
 
             # prune down to only common IMGT sites
             # if only_common_sites:
             pdb_sites = set(pdb_df.res_id.astype(str))
             metric_sites = set(metric_df.position_IMGT.astype(str))
             union_sites = pdb_sites & metric_sites
+            metric_only_sites = metric_sites - pdb_sites
+            print(f"metric_only_sites = {sorted(list(metric_only_sites))}")
+            pdb_only_sites = pdb_sites - metric_sites
+            print(f"pdb_only_sites = {sorted(list(pdb_only_sites))}")
             xor_sites = pdb_sites ^ metric_sites
             metric_df = metric_df[metric_df.position_IMGT.astype(str).isin(union_sites)]
             print(f"omitted_sites: {len(xor_sites)} {sorted(list(xor_sites))}")
@@ -401,12 +409,12 @@ def main(args=sys.argv):
 
             add_options = ""
             condition_options = '--condition "condition" '
-            condition_options += '--condition-name "Factor" '
+            condition_options += '--condition-name "Metric" '
             add_options += condition_options
 
             try:
                 # build dms-viz json
-                full_description = f"{pdb_prefix} :: {chain_str} :: {metric_full_name}"
+                full_description = f"{pdb_prefix} :: {chain_str} :: {metric_long_name}"
                 dmsviz_path = f"{temp_dir}/{pdb_prefix}.{chain_str}.{metric_name}.dmsviz.json"
                 # COLOR_PALETTE = generate_color_palette(
                 #     n_colors=num_metrics, colormap=COLOR_MAP, as_hex=True)
@@ -424,7 +432,7 @@ def main(args=sys.argv):
                     local_pdb_path=input_pdb_path)
 
                 # add summary data entry
-                summary_data["metric_full_name"].append(metric_full_name)
+                summary_data["metric_long_name"].append(metric_long_name)
                 summary_data["dmsviz_filepath"].append(os.path.basename(dmsviz_path))
                 summary_data["pdb_filepath"].append(os.path.basename(pdb_path))
                 summary_data["pdbid"].append(pdb_prefix)
@@ -435,6 +443,8 @@ def main(args=sys.argv):
             except Exception as e:
                 cprint(f"[ERROR] {pdb_prefix} {chainid} {metric_name}", color=colors.RED)
                 cprint(f"[ERROR] error occurred during configure-dms-viz: {e}", color=colors.RED)
+                if EXIT_ON_EXCEPTION:
+                    exit(1)
             else:
                 cprint(f"[SUCCESS] configure-dms-viz completed successfully!", color=colors.GREEN)
 
