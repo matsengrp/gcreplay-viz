@@ -366,9 +366,9 @@ class Event {
     // log request
     var alert_text = `Loading pdb...\n`
     alert_text += `${HTMLHelper.ul_open()}`
-    alert_text += `<li> PDB: ${match['pdbid']} </li>\n`
-    alert_text += `<li> Chain ID: ${match['chainid']} </li>\n`
-    alert_text += `<li> Metric: ${match['metric_full_name']} </li>\n`
+    alert_text += `<li> PDB: ${match['pdbid_long_name']} </li>\n`
+    alert_text += `<li> Chain ID: ${match['chainid_long_name']} </li>\n`
+    alert_text += `<li> Metric: ${match['metric_long_name']} </li>\n`
     alert_text += `${HTMLHelper.ul_close()}`
     Event.alert_set_text(alert_text)
 
