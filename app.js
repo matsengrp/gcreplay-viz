@@ -441,5 +441,5 @@ document.addEventListener('DOMContentLoaded', async function () {
   pdb_inspect_button.addEventListener('click', () => Event.load_pdb());
 
   // Pre-load data
-  Event.load_pdb({'pdbid': 'CGG_mean', 'chainid': 'H', 'metricid': 'metric'});
+  // Event.load_pdb({'pdbid': 'CGG_mean', 'chainid': 'H', 'metricid': 'metric'});
 });
