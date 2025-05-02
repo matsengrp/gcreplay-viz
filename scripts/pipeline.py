@@ -268,8 +268,10 @@ def main(args=sys.argv):
         "dmsviz_filepath": [],
         "pdb_filepath": [],
         "pdbid": [],
+        "pdbid_long_name": [],
         "chainid": [],
-        "metricid": [],
+        "chainid_long_name": [],
+        "metric": [],
         "metric_long_name": [],
         "description": [],
     }
@@ -332,6 +334,10 @@ def main(args=sys.argv):
         "delta": "Binding/Expression: Delta Change Relative to Wildtype",
         "mut_rate": "Mutation Rate",
         "mut_enrichment": "Mutation Enrichment",
+    }
+    chain_long_names = {
+        "H": "Heavy Chain",
+        "L": "Light Chain",
     }
 
     all_metric_dfs = {}
@@ -432,12 +438,14 @@ def main(args=sys.argv):
                     local_pdb_path=input_pdb_path)
 
                 # add summary data entry
-                summary_data["metric_long_name"].append(metric_long_name)
                 summary_data["dmsviz_filepath"].append(os.path.basename(dmsviz_path))
                 summary_data["pdb_filepath"].append(os.path.basename(pdb_path))
                 summary_data["pdbid"].append(pdb_prefix)
+                summary_data["pdbid_long_name"].append(pdb_prefix)
                 summary_data["chainid"].append(chain_str)
-                summary_data["metricid"].append(metric_name)
+                summary_data["chainid_long_name"].append(chain_long_names[chainid])
+                summary_data["metric"].append(metric_name)
+                summary_data["metric_long_name"].append(metric_long_name)
                 summary_data["description"].append(full_description)
 
             except Exception as e:

@@ -434,9 +434,9 @@ document.addEventListener('DOMContentLoaded', async function () {
   // summary_db = new JsonTable(summary_db, 'row');
 
   // Populate data
-  Event.populate_dropdown_from_data(selector['pdbid'], summary_db.data, 'pdbid', 'pdbid');
-  Event.populate_dropdown_from_data(selector['chainid'], summary_db.data, 'chainid', 'chainid');
-  Event.populate_dropdown_from_data(selector['metricid'], summary_db.data, 'metricid', 'metric_long_name');
+  Event.populate_dropdown_from_data(selector['pdbid'], summary_db.data, 'pdbid', 'pdbid_long_name');
+  Event.populate_dropdown_from_data(selector['chainid'], summary_db.data, 'chainid', 'chainid_long_name');
+  Event.populate_dropdown_from_data(selector['metricid'], summary_db.data, 'metric', 'metric_long_name');
 
   // Event buttons
   sidebar_toggle_button.addEventListener('click', Event.sidebar_toggle);

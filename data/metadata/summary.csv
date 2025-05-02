@@ -1,31 +1,31 @@
-dmsviz_filepath,pdb_filepath,pdbid,chainid,metricid,metric_long_name,description
-CGG_mean.L.bind.dmsviz.json,CGG_mean.pdb,CGG_mean,L,bind,Binding,CGG_mean :: L :: Binding
-CGG_mean.L.expr.dmsviz.json,CGG_mean.pdb,CGG_mean,L,expr,Expression,CGG_mean :: L :: Expression
-CGG_mean.L.bind_expr.dmsviz.json,CGG_mean.pdb,CGG_mean,L,bind_expr,Binding/Expression,CGG_mean :: L :: Binding/Expression
-CGG_mean.L.mut_rate.dmsviz.json,CGG_mean.pdb,CGG_mean,L,mut_rate,Mutation Rate,CGG_mean :: L :: Mutation Rate
-CGG_mean.L.mut_enrichment.dmsviz.json,CGG_mean.pdb,CGG_mean,L,mut_enrichment,Mutation Enrichment,CGG_mean :: L :: Mutation Enrichment
-CGG_mean.H.bind.dmsviz.json,CGG_mean.pdb,CGG_mean,H,bind,Binding,CGG_mean :: H :: Binding
-CGG_mean.H.expr.dmsviz.json,CGG_mean.pdb,CGG_mean,H,expr,Expression,CGG_mean :: H :: Expression
-CGG_mean.H.bind_expr.dmsviz.json,CGG_mean.pdb,CGG_mean,H,bind_expr,Binding/Expression,CGG_mean :: H :: Binding/Expression
-CGG_mean.H.mut_rate.dmsviz.json,CGG_mean.pdb,CGG_mean,H,mut_rate,Mutation Rate,CGG_mean :: H :: Mutation Rate
-CGG_mean.H.mut_enrichment.dmsviz.json,CGG_mean.pdb,CGG_mean,H,mut_enrichment,Mutation Enrichment,CGG_mean :: H :: Mutation Enrichment
-expression_mean.L.bind.dmsviz.json,expression_mean.pdb,expression_mean,L,bind,Binding,expression_mean :: L :: Binding
-expression_mean.L.expr.dmsviz.json,expression_mean.pdb,expression_mean,L,expr,Expression,expression_mean :: L :: Expression
-expression_mean.L.bind_expr.dmsviz.json,expression_mean.pdb,expression_mean,L,bind_expr,Binding/Expression,expression_mean :: L :: Binding/Expression
-expression_mean.L.mut_rate.dmsviz.json,expression_mean.pdb,expression_mean,L,mut_rate,Mutation Rate,expression_mean :: L :: Mutation Rate
-expression_mean.L.mut_enrichment.dmsviz.json,expression_mean.pdb,expression_mean,L,mut_enrichment,Mutation Enrichment,expression_mean :: L :: Mutation Enrichment
-expression_mean.H.bind.dmsviz.json,expression_mean.pdb,expression_mean,H,bind,Binding,expression_mean :: H :: Binding
-expression_mean.H.expr.dmsviz.json,expression_mean.pdb,expression_mean,H,expr,Expression,expression_mean :: H :: Expression
-expression_mean.H.bind_expr.dmsviz.json,expression_mean.pdb,expression_mean,H,bind_expr,Binding/Expression,expression_mean :: H :: Binding/Expression
-expression_mean.H.mut_rate.dmsviz.json,expression_mean.pdb,expression_mean,H,mut_rate,Mutation Rate,expression_mean :: H :: Mutation Rate
-expression_mean.H.mut_enrichment.dmsviz.json,expression_mean.pdb,expression_mean,H,mut_enrichment,Mutation Enrichment,expression_mean :: H :: Mutation Enrichment
-IgY-CH2_EH2_final_real_space_refined_021.L.bind.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,bind,Binding,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding
-IgY-CH2_EH2_final_real_space_refined_021.L.expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,expr,Expression,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Expression
-IgY-CH2_EH2_final_real_space_refined_021.L.bind_expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,bind_expr,Binding/Expression,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding/Expression
-IgY-CH2_EH2_final_real_space_refined_021.L.mut_rate.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,mut_rate,Mutation Rate,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Mutation Rate
-IgY-CH2_EH2_final_real_space_refined_021.L.mut_enrichment.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,L,mut_enrichment,Mutation Enrichment,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Mutation Enrichment
-IgY-CH2_EH2_final_real_space_refined_021.H.bind.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,bind,Binding,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding
-IgY-CH2_EH2_final_real_space_refined_021.H.expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,expr,Expression,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Expression
-IgY-CH2_EH2_final_real_space_refined_021.H.bind_expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,bind_expr,Binding/Expression,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding/Expression
-IgY-CH2_EH2_final_real_space_refined_021.H.mut_rate.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,mut_rate,Mutation Rate,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Mutation Rate
-IgY-CH2_EH2_final_real_space_refined_021.H.mut_enrichment.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,H,mut_enrichment,Mutation Enrichment,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Mutation Enrichment
+dmsviz_filepath,pdb_filepath,pdbid,pdbid_long_name,chainid,chainid_long_name,metric,metric_long_name,description
+CGG_mean.H.bind.dmsviz.json,CGG_mean.pdb,CGG_mean,CGG_mean,H,Heavy Chain,bind,Binding,CGG_mean :: H :: Binding
+CGG_mean.H.expr.dmsviz.json,CGG_mean.pdb,CGG_mean,CGG_mean,H,Heavy Chain,expr,Expression,CGG_mean :: H :: Expression
+CGG_mean.H.bind_expr.dmsviz.json,CGG_mean.pdb,CGG_mean,CGG_mean,H,Heavy Chain,bind_expr,Binding/Expression,CGG_mean :: H :: Binding/Expression
+CGG_mean.H.mut_rate.dmsviz.json,CGG_mean.pdb,CGG_mean,CGG_mean,H,Heavy Chain,mut_rate,Mutation Rate,CGG_mean :: H :: Mutation Rate
+CGG_mean.H.mut_enrichment.dmsviz.json,CGG_mean.pdb,CGG_mean,CGG_mean,H,Heavy Chain,mut_enrichment,Mutation Enrichment,CGG_mean :: H :: Mutation Enrichment
+CGG_mean.L.bind.dmsviz.json,CGG_mean.pdb,CGG_mean,CGG_mean,L,Light Chain,bind,Binding,CGG_mean :: L :: Binding
+CGG_mean.L.expr.dmsviz.json,CGG_mean.pdb,CGG_mean,CGG_mean,L,Light Chain,expr,Expression,CGG_mean :: L :: Expression
+CGG_mean.L.bind_expr.dmsviz.json,CGG_mean.pdb,CGG_mean,CGG_mean,L,Light Chain,bind_expr,Binding/Expression,CGG_mean :: L :: Binding/Expression
+CGG_mean.L.mut_rate.dmsviz.json,CGG_mean.pdb,CGG_mean,CGG_mean,L,Light Chain,mut_rate,Mutation Rate,CGG_mean :: L :: Mutation Rate
+CGG_mean.L.mut_enrichment.dmsviz.json,CGG_mean.pdb,CGG_mean,CGG_mean,L,Light Chain,mut_enrichment,Mutation Enrichment,CGG_mean :: L :: Mutation Enrichment
+expression_mean.H.bind.dmsviz.json,expression_mean.pdb,expression_mean,expression_mean,H,Heavy Chain,bind,Binding,expression_mean :: H :: Binding
+expression_mean.H.expr.dmsviz.json,expression_mean.pdb,expression_mean,expression_mean,H,Heavy Chain,expr,Expression,expression_mean :: H :: Expression
+expression_mean.H.bind_expr.dmsviz.json,expression_mean.pdb,expression_mean,expression_mean,H,Heavy Chain,bind_expr,Binding/Expression,expression_mean :: H :: Binding/Expression
+expression_mean.H.mut_rate.dmsviz.json,expression_mean.pdb,expression_mean,expression_mean,H,Heavy Chain,mut_rate,Mutation Rate,expression_mean :: H :: Mutation Rate
+expression_mean.H.mut_enrichment.dmsviz.json,expression_mean.pdb,expression_mean,expression_mean,H,Heavy Chain,mut_enrichment,Mutation Enrichment,expression_mean :: H :: Mutation Enrichment
+expression_mean.L.bind.dmsviz.json,expression_mean.pdb,expression_mean,expression_mean,L,Light Chain,bind,Binding,expression_mean :: L :: Binding
+expression_mean.L.expr.dmsviz.json,expression_mean.pdb,expression_mean,expression_mean,L,Light Chain,expr,Expression,expression_mean :: L :: Expression
+expression_mean.L.bind_expr.dmsviz.json,expression_mean.pdb,expression_mean,expression_mean,L,Light Chain,bind_expr,Binding/Expression,expression_mean :: L :: Binding/Expression
+expression_mean.L.mut_rate.dmsviz.json,expression_mean.pdb,expression_mean,expression_mean,L,Light Chain,mut_rate,Mutation Rate,expression_mean :: L :: Mutation Rate
+expression_mean.L.mut_enrichment.dmsviz.json,expression_mean.pdb,expression_mean,expression_mean,L,Light Chain,mut_enrichment,Mutation Enrichment,expression_mean :: L :: Mutation Enrichment
+IgY-CH2_EH2_final_real_space_refined_021.H.bind.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,IgY-CH2_EH2_final_real_space_refined_021,H,Heavy Chain,bind,Binding,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding
+IgY-CH2_EH2_final_real_space_refined_021.H.expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,IgY-CH2_EH2_final_real_space_refined_021,H,Heavy Chain,expr,Expression,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Expression
+IgY-CH2_EH2_final_real_space_refined_021.H.bind_expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,IgY-CH2_EH2_final_real_space_refined_021,H,Heavy Chain,bind_expr,Binding/Expression,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Binding/Expression
+IgY-CH2_EH2_final_real_space_refined_021.H.mut_rate.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,IgY-CH2_EH2_final_real_space_refined_021,H,Heavy Chain,mut_rate,Mutation Rate,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Mutation Rate
+IgY-CH2_EH2_final_real_space_refined_021.H.mut_enrichment.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,IgY-CH2_EH2_final_real_space_refined_021,H,Heavy Chain,mut_enrichment,Mutation Enrichment,IgY-CH2_EH2_final_real_space_refined_021 :: H :: Mutation Enrichment
+IgY-CH2_EH2_final_real_space_refined_021.L.bind.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,IgY-CH2_EH2_final_real_space_refined_021,L,Light Chain,bind,Binding,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding
+IgY-CH2_EH2_final_real_space_refined_021.L.expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,IgY-CH2_EH2_final_real_space_refined_021,L,Light Chain,expr,Expression,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Expression
+IgY-CH2_EH2_final_real_space_refined_021.L.bind_expr.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,IgY-CH2_EH2_final_real_space_refined_021,L,Light Chain,bind_expr,Binding/Expression,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Binding/Expression
+IgY-CH2_EH2_final_real_space_refined_021.L.mut_rate.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,IgY-CH2_EH2_final_real_space_refined_021,L,Light Chain,mut_rate,Mutation Rate,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Mutation Rate
+IgY-CH2_EH2_final_real_space_refined_021.L.mut_enrichment.dmsviz.json,IgY-CH2_EH2_final_real_space_refined_021.pdb,IgY-CH2_EH2_final_real_space_refined_021,IgY-CH2_EH2_final_real_space_refined_021,L,Light Chain,mut_enrichment,Mutation Enrichment,IgY-CH2_EH2_final_real_space_refined_021 :: L :: Mutation Enrichment
