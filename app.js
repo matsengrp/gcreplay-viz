@@ -353,6 +353,7 @@ class Event {
       Object.entries(filter).every(([key, val]) => item[key] == val)
     );
     const match = matches[0];
+    console.log(match)
     console.log(`matches found: ${matches.length}`)
     console.log(matches)
 
@@ -411,6 +412,7 @@ class Event {
 
     // const unique_values = [...new Set(data.map(item => item[value_field]))].sort();
     const unique_rows = Event.get_first_unique_rows_by_column(data, value_field);
+    console.log(unique_rows)
 
     unique_rows.forEach(item => {
       const option = document.createElement('option');
