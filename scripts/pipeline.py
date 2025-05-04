@@ -415,13 +415,14 @@ def main(args=sys.argv):
 
             add_options = ""
             condition_options = '--condition "condition" '
-            condition_options += '--condition-name "Value" '
+            condition_options += '--condition-name "Metric" '
             add_options += condition_options
-            heatmap_min = metric_df["factor"].min()
-            heatmap_mean = metric_df["factor"].mean()
-            heatmap_max = metric_df["factor"].max()
-            heatmap_limit_options = f'--heatmap-limits {heatmap_min},{heatmap_mean},{heatmap_max} '
-            # add_options += heatmap_limit_options
+            heatmap_min = np.round(metric_df["factor"].min() + 0.01, decimals=2)
+            heatmap_min = 0.0
+            heatmap_mean = np.round(metric_df["factor"].mean() + 0.01, decimals=2)
+            heatmap_max = np.round(metric_df["factor"].max() + 0.01, decimals=2)
+            heatmap_limit_options = f'--heatmap-limits {heatmap_min},{heatmap_max} '
+            add_options += heatmap_limit_options
 
             try:
                 # build dms-viz json
