@@ -15,7 +15,7 @@ from Bio.PDB import PDBParser,PDBIO
 from Bio.PDB.DSSP import DSSP
 from utility import *
 
-EXIT_ON_EXCEPTION = True
+EXIT_ON_EXCEPTION = False
 # palette for binding
 DARK_PALETTE = ["#7570b3", "#808080"]  # original Dark2 pallete
 VISIBLE_PALETTE = ["#675ed6", "#808080"]  # more visible pallete
@@ -417,12 +417,22 @@ def main(args=sys.argv):
             condition_options = '--condition "condition" '
             condition_options += '--condition-name "Metric" '
             add_options += condition_options
-            heatmap_pad = 0.01
-            heatmap_min = int(metric_df["factor"].min()) - 1
-            # heatmap_min = 0.0
-            heatmap_mean = np.round(metric_df["factor"].mean(), decimals=2)
-            heatmap_max = int(metric_df["factor"].max()) + 1
-            heatmap_limit_options = f'--heatmap-limits {heatmap_mean} '
+
+            def format_number_for_lex_sort(value, int_digits=5, decimal_digits=2):
+                abs_value = abs(value)
+                total_width = int_digits + 1 + decimal_digits  # 1 for decimal point
+                # sign = '+' if value >= 0 else '-'
+                sign = '0' if value >= 0 else '-'
+                return f"{sign}{abs_value:0{total_width}.{decimal_digits}f}"
+
+            heatmap = {}
+            heatmap["min"] = format_number_for_lex_sort(metric_df["factor"].min() - 0.01)
+            heatmap["mean"] = format_number_for_lex_sort(metric_df["factor"].mean())
+            heatmap["max"] = format_number_for_lex_sort(metric_df["factor"].max() + 0.01)
+            if (heatmap['min'] < heatmap['max']):
+                heatmap_limit_options = f'--heatmap-limits {heatmap["min"]},{heatmap["max"]}'
+            else:
+                heatmap_limit_options = f'--heatmap-limits {heatmap["mean"]}'
             add_options += heatmap_limit_options
 
             try:
