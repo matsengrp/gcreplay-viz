@@ -417,11 +417,12 @@ def main(args=sys.argv):
             condition_options = '--condition "condition" '
             condition_options += '--condition-name "Metric" '
             add_options += condition_options
-            heatmap_min = np.round(metric_df["factor"].min() + 0.01, decimals=2)
-            heatmap_min = 0.0
-            heatmap_mean = np.round(metric_df["factor"].mean() + 0.01, decimals=2)
-            heatmap_max = np.round(metric_df["factor"].max() + 0.01, decimals=2)
-            heatmap_limit_options = f'--heatmap-limits {heatmap_min},{heatmap_max} '
+            heatmap_pad = 0.01
+            heatmap_min = int(metric_df["factor"].min()) - 1
+            # heatmap_min = 0.0
+            heatmap_mean = np.round(metric_df["factor"].mean(), decimals=2)
+            heatmap_max = int(metric_df["factor"].max()) + 1
+            heatmap_limit_options = f'--heatmap-limits {heatmap_mean} '
             add_options += heatmap_limit_options
 
             try:
