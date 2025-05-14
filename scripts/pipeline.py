@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 from Bio.PDB import PDBParser,PDBIO
 from Bio.PDB.DSSP import DSSP
 from utility import *
+from utility import run_command
 
 EXIT_ON_EXCEPTION = False
 # palette for binding
@@ -168,17 +169,12 @@ def write_metric_csv(pdb_df, metric_df, output_path, site_count=None, metric_col
     return metric_df
 
 
-def configure_dms_viz(
-    name,
-    plot_colors,
-    metric,
-    input_metric_path,
-    input_sitemap_path,
+def dmsviz_format(
+    name, plot_colors, metric,
+    input_metric_path, input_sitemap_path,
     output_path,
-    included_chains=[],
-    excluded_chains=[],
-    add_options="",
-    local_pdb_path=None,
+    included_chains=[], excluded_chains=[],
+    add_options="", local_pdb_path=None,
 ):
     program = "configure-dms-viz format"
     plot_colors_str = ",".join(plot_colors)
@@ -205,7 +201,26 @@ def configure_dms_viz(
 
     if output is None:
         raise Exception("ERROR: configure-dms-viz format run failed.")
-    pass
+    return
+
+
+def dmsviz_join(input_paths, output_path, description=None):
+    program = "configure-dms-viz join"
+    input_path_str = ",".join(input_paths)
+    input_opt = f"--input {input_path_str}"
+    output_opt = f"--output {output_path}"
+
+    add_opts = ""
+    if description:
+        add_opts += f'--description "{description}"'
+
+    cmd = f"{program} {input_opt} {output_opt} {add_opts}"
+    cmd = " ".join(cmd.split())
+    output = run_command(cmd)
+
+    if output is None:
+        raise Exception("ERROR: configure-dms-viz format run failed.")
+    return
 
 
 def compare_seqs(aa_seqs):
@@ -366,6 +381,8 @@ def main(args=sys.argv):
         chain_str = f"{''.join(chainid)}"
         print(f"pdb: {pdb_prefix=} {chainid=}")
 
+        dmsviz_paths = []
+
         # skip if not in focal_chainids
         if chainid not in focal_chainids:
             continue
@@ -418,32 +435,40 @@ def main(args=sys.argv):
             condition_options += '--condition-name "Metric" '
             add_options += condition_options
 
-            def format_number_for_lex_sort(value, int_digits=5, decimal_digits=2):
+            def format_number_for_lex_sort(value, int_digits=5, decimal_digits=2, num_pref_zeroes=0):
                 abs_value = abs(value)
                 total_width = int_digits + 1 + decimal_digits  # 1 for decimal point
+                pref_zeroes = "0" * num_pref_zeroes
                 # sign = '+' if value >= 0 else '-'
                 sign = '0' if value >= 0 else '-'
-                return f"{sign}{abs_value:0{total_width}.{decimal_digits}f}"
+                return f"{sign}{pref_zeroes}{abs_value:0{total_width}.{decimal_digits}f}"
 
+            # This is a workaround for a heatmap bug: configure-dms-viz parses these numeric values lexicographically.
+            # The program requires min < mean < max, lexicographically.
             heatmap = {}
             heatmap["min"] = format_number_for_lex_sort(metric_df["factor"].min() - 0.01)
             heatmap["mean"] = format_number_for_lex_sort(metric_df["factor"].mean())
             heatmap["max"] = format_number_for_lex_sort(metric_df["factor"].max() + 0.01)
-            if (heatmap['min'] < heatmap['max']):
-                heatmap_limit_options = f'--heatmap-limits {heatmap["min"]},{heatmap["max"]}'
+
+            if not (heatmap['min'] < heatmap['max']):
+                # raise Exception(f"mean not less than max by lex_sort: {heatmap['mean']=} {heatmap['max']=}")
+                heatmap_limit_options = f"--heatmap-limits {heatmap['mean']}"
+            if not ((heatmap['min'] < heatmap['mean']) and (heatmap['mean'] < heatmap['max'])):
+                # raise Exception(f"min not less than mean by lex_sort: {heatmap['min']=} {heatmap['mean']=}")
+                heatmap_limit_options = f"--heatmap-limits {heatmap['min']},{heatmap['max']}"
             else:
-                heatmap_limit_options = f'--heatmap-limits {heatmap["mean"]}'
+                heatmap_limit_options = f"--heatmap-limits {heatmap['min']},{heatmap['mean']},{heatmap['max']}"
             add_options += heatmap_limit_options
 
             try:
                 # build dms-viz json
-                full_description = f"{pdb_prefix} :: {chain_str} :: {metric_long_name}"
+                description = f"{pdb_prefix} :: {chain_str} :: {metric_long_name}"
                 dmsviz_path = f"{temp_dir}/{pdb_prefix}.{chain_str}.{metric_name}.dmsviz.json"
                 # COLOR_PALETTE = generate_color_palette(
                 #     n_colors=num_metrics, colormap=COLOR_MAP, as_hex=True)
                 COLOR_PALETTE=ALT_PALETTE[:num_metrics]
-                configure_dms_viz(
-                    name=full_description,
+                dmsviz_format(
+                    name=description,
                     plot_colors=COLOR_PALETTE,
                     metric="factor",
                     input_metric_path=metric_path,
@@ -453,6 +478,7 @@ def main(args=sys.argv):
                     excluded_chains=other_chainids,
                     add_options=add_options,
                     local_pdb_path=input_pdb_path)
+                dmsviz_paths.append(dmsviz_path)
 
                 # add summary data entry
                 summary_data["dmsviz_filepath"].append(os.path.basename(dmsviz_path))
@@ -463,15 +489,46 @@ def main(args=sys.argv):
                 summary_data["chainid_long_name"].append(chain_long_names[chainid])
                 summary_data["metric"].append(metric_name)
                 summary_data["metric_long_name"].append(metric_long_name)
-                summary_data["description"].append(full_description)
+                summary_data["description"].append(description)
 
             except Exception as e:
                 cprint(f"[ERROR] {pdb_prefix} {chainid} {metric_name}", color=colors.RED)
-                cprint(f"[ERROR] error occurred during configure-dms-viz: {e}", color=colors.RED)
+                cprint(f"[ERROR] error occurred during `configure-dms-viz format`: {e}", color=colors.RED)
                 if EXIT_ON_EXCEPTION:
                     exit(1)
             else:
-                cprint(f"[SUCCESS] configure-dms-viz completed successfully!", color=colors.GREEN)
+                cprint(f"[SUCCESS] `configure-dms-viz format` completed successfully!", color=colors.GREEN)
+
+        try:
+            # join all metric dmsviz files into one
+            metric_final_name = "all_metrics"
+            metric_final_long_name = "All Metrics"
+            description_final = f"{pdb_prefix} :: {chain_str} :: {metric_final_long_name}"
+            dmsviz_final_path = f"{temp_dir}/{pdb_prefix}.{chain_str}.{metric_final_name}.dmsviz.json"
+            dmsviz_join(
+                input_paths=dmsviz_paths,
+                output_path=dmsviz_final_path,
+                # description=description_final,
+            )
+
+            # add summary data entry
+            summary_data["dmsviz_filepath"].append(os.path.basename(dmsviz_final_path))
+            summary_data["pdb_filepath"].append(os.path.basename(pdb_path))
+            summary_data["pdbid"].append(pdb_prefix)
+            summary_data["pdbid_long_name"].append(pdb_prefix)
+            summary_data["chainid"].append(chain_str)
+            summary_data["chainid_long_name"].append(chain_long_names[chainid])
+            summary_data["metric"].append(metric_final_name)
+            summary_data["metric_long_name"].append(metric_final_long_name)
+            summary_data["description"].append(description_final)
+
+        except Exception as e:
+            cprint(f"[ERROR] {pdb_prefix} {chainid}", color=colors.RED)
+            cprint(f"[ERROR] error occurred during `configure-dms-viz join`: {e}", color=colors.RED)
+            if EXIT_ON_EXCEPTION:
+                exit(1)
+        else:
+            cprint(f"[SUCCESS] `configure-dms-viz join` completed successfully!", color=colors.GREEN)
 
         summary_df = pd.DataFrame(summary_data)
         summary_df.to_csv(f"{temp_dir}/summary.csv", index=False)
