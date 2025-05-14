@@ -185,6 +185,117 @@ class Utility {
   }
 }
 
+class JsonTable {
+  constructor(json_obj, ordered_by = 'col') {
+    this.data = json_obj;
+    // ordered_by can be ordered first by 'col' or 'row'.
+    this.ordered_by = ordered_by;
+    this.initialize();
+  }
+
+  initialize() {
+    this.all_values_by_field = {};
+    this.selected_values_by_field = {};
+    this.fields = this.get_fields();
+    // initialize all fields and selected fields.
+    this.all_rowids = this.get_all_rowids();
+    this.selected_rowids = this.all_rowids;
+    for (const i in this.fields) {
+      const field = this.fields[i];
+      this.all_values_by_field[field] = this.get_unique_values_by_field(field);
+    }
+    this.reset_filter();
+  }
+
+  get_fields() {
+    if (this.ordered_by == 'col') {
+      return Object.keys(this.data);
+    } /* else if (this.ordered_by == 'row') */
+    return Object.keys(this.data[0]);
+  }
+
+  get_all_rowids() {
+    if (this.ordered_by == 'col') {
+      return Object.keys(this.data.pdbid);
+    } /* else if (this.orientation == 'row) */
+    return Object.keys(this.data);
+  }
+
+  get_data(row_id, field_name) {
+    if (this.ordered_by == 'col') {
+      return this.data[field_name][row_id];
+    } /* else if (this.ordered_by == 'row') */
+    return this.data[row_id][field_name];
+  }
+
+  get_row_data(row_id) {
+    var row_data = {};
+    for (const i in this.fields) {
+      const field_name = this.fields[i];
+      row_data[field_name] = this.get_data(row_id, field_name);
+    }
+    return row_data;
+  }
+
+  find_first_row_by_query(field_name, query) {
+    for (const i in this.selected_rowids) {
+      const row_id = this.selected_rowids[i];
+      const data = this.get_data(row_id, field_name);
+      if (Utility.query_matches(data, query)) {
+        return this.get_row_data(row_id);
+      }
+    }
+    return null;
+  }
+
+  reset_filter() {
+    this.selected_rowids = this.all_rowids;
+    for (const i in this.fields) {
+      const field = this.fields[i];
+      this.selected_values_by_field[field] = this.all_values_by_field[field];
+    }
+  }
+
+  update_after_filter() {
+    for (const i in this.fields) {
+      const field = this.fields[i];
+      this.selected_values_by_field[field] = this.get_unique_values_by_field(field);
+    }
+  }
+
+  apply_filter(field_name, query, update_fields = true) {
+    var new_selected_rowids = []
+    for (const i in this.selected_rowids) {
+      const row_id = this.selected_rowids[i];
+      const data = this.get_data(row_id, field_name);
+      if (Utility.query_matches(data, query)) {
+        new_selected_rowids.push(row_id);
+      }
+    }
+    this.selected_rowids = new_selected_rowids;
+    if (update_fields) {
+      this.update_after_filter();
+    }
+    return this.selected_rowids;
+  }
+
+  get_values_by_field(field_name) {
+    var values = [];
+    for (const i in this.selected_rowids) {
+      const row_id = this.selected_rowids[i];
+      var data = this.get_data(row_id, field_name);
+      // data = Utility.truncate(data, '*');
+      values.push(data);
+    }
+    return values;
+  }
+
+  get_unique_values_by_field(field_name) {
+    var vals = this.get_values_by_field(field_name);
+    return Utility.create_unique_sorted_array(vals);
+  }
+}
+
 class Event {
   // Window slider and alerts
 
@@ -321,6 +432,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   // Initialize data
   summary_db = await Utility.load_summary_db();
+  // summary_db = new JsonTable(summary_db, 'row');
 
   // Populate data
   Event.populate_dropdown_from_data(selector['pdbid'], summary_db.data, 'pdbid', 'pdbid_long_name');
