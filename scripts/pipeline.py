@@ -374,6 +374,8 @@ def main(args=sys.argv):
     pprint.pp(aa_seqs)
     # compare_seqs(aa_seqs=aa_seqs)
 
+    all_dmsviz_paths = []
+
     # build csvs and dmsviz jsons
     for (pdb_path, chainid), pdb_df in all_pdb_dfs.items():
         pdb_prefix = os.path.basename(pdb_path).split(".")[0]
@@ -479,6 +481,7 @@ def main(args=sys.argv):
                     add_options=add_options,
                     local_pdb_path=input_pdb_path)
                 dmsviz_paths.append(dmsviz_path)
+                all_dmsviz_paths.append(dmsviz_path)
 
                 # add summary data entry
                 summary_data["dmsviz_filepath"].append(os.path.basename(dmsviz_path))
@@ -499,12 +502,12 @@ def main(args=sys.argv):
             else:
                 cprint(f"[SUCCESS] `configure-dms-viz format` completed successfully!", color=colors.GREEN)
 
+        # join all metric dmsviz files into one
+        metric_final_name = "all_metrics"
+        metric_final_long_name = "All Metrics"
+        description_final = f"{pdb_prefix} :: {chain_str} :: {metric_final_long_name}"
+        dmsviz_final_path = f"{temp_dir}/{pdb_prefix}.{chain_str}.{metric_final_name}.dmsviz.json"
         try:
-            # join all metric dmsviz files into one
-            metric_final_name = "all_metrics"
-            metric_final_long_name = "All Metrics"
-            description_final = f"{pdb_prefix} :: {chain_str} :: {metric_final_long_name}"
-            dmsviz_final_path = f"{temp_dir}/{pdb_prefix}.{chain_str}.{metric_final_name}.dmsviz.json"
             dmsviz_join(
                 input_paths=dmsviz_paths,
                 output_path=dmsviz_final_path,
@@ -530,13 +533,46 @@ def main(args=sys.argv):
         else:
             cprint(f"[SUCCESS] `configure-dms-viz join` completed successfully!", color=colors.GREEN)
 
-        summary_df = pd.DataFrame(summary_data)
-        summary_df.to_csv(f"{temp_dir}/summary.csv", index=False)
-        summary_json = summary_df.to_json(orient='records')
-        with open(f"{temp_dir}/summary.json", "w") as file:
-            # json.dump(summary_json, file)
-            file.write(f"{summary_json}\n")
-        print(summary_df)
+    # join all metric dmsviz files into one
+    metric_final_name = "all_metrics"
+    metric_final_long_name = "All Metrics"
+    chain_str = "ALL"
+    chain_str_long = "All Chains"
+    description_final = f"{pdb_prefix} :: {metric_final_long_name}"
+    dmsviz_final_path = f"{temp_dir}/{pdb_prefix}.{chain_str}.{metric_final_name}.dmsviz.json"
+    try:
+        dmsviz_join(
+            input_paths=all_dmsviz_paths,
+            output_path=dmsviz_final_path,
+            # description=description_final,
+        )
+
+        # add summary data entry
+        summary_data["dmsviz_filepath"].append(os.path.basename(dmsviz_final_path))
+        summary_data["pdb_filepath"].append(os.path.basename(pdb_path))
+        summary_data["pdbid"].append(pdb_prefix)
+        summary_data["pdbid_long_name"].append(pdb_prefix)
+        summary_data["chainid"].append(chain_str)
+        summary_data["chainid_long_name"].append(chain_str_long)
+        summary_data["metric"].append(metric_final_name)
+        summary_data["metric_long_name"].append(metric_final_long_name)
+        summary_data["description"].append(description_final)
+
+    except Exception as err:
+        cprint(f"[ERROR] {pdb_prefix} {chainid}", color=colors.RED)
+        cprint(f"[ERROR] error occurred during `configure-dms-viz join`: {err}", color=colors.RED)
+        if EXIT_ON_EXCEPTION:
+            exit(1)
+    else:
+        cprint(f"[SUCCESS] `configure-dms-viz join` completed successfully!", color=colors.GREEN)
+
+    summary_df = pd.DataFrame(summary_data)
+    summary_df.to_csv(f"{temp_dir}/summary.csv", index=False)
+    summary_json = summary_df.to_json(orient='records')
+    with open(f"{temp_dir}/summary.json", "w") as file:
+        # json.dump(summary_json, file)
+        file.write(f"{summary_json}\n")
+    print(summary_df)
 
     if args['output_dir'] is not None:
         temp_jsons = glob.glob(f"{temp_dir}/*.dmsviz.json")

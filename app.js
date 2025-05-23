@@ -5,7 +5,7 @@ const my_iframe = document.getElementById('myIframe');
 const pdb_inspect_button = document.getElementById('pdbInspectButton');
 // const pdb_reset_button = document.getElementById('pdbResetButton');
 // const filter_reset_button = document.getElementById('filterResetButton');
-const sidebar = document.querySelector('.sidebar');
+const sidebar = document.getElementById('sidebar');
 const sidebar_toggle_button = document.getElementById('sidebarToggleButton');
 const alert_message_box = document.getElementById('loadedAlert');
 var selector = {
@@ -353,7 +353,6 @@ class Event {
       Object.entries(filter).every(([key, val]) => item[key] == val)
     );
     const match = matches[0];
-    console.log(match)
     console.log(`matches found: ${matches.length}`)
     console.log(matches)
 
@@ -428,7 +427,8 @@ class Event {
 
 document.addEventListener('DOMContentLoaded', async function () {
   // Initialize page elements
-  sidebar_toggle_button.innerText = sidebar_btn_txt['open']
+  sidebar_toggle_button.innerText = sidebar_btn_txt['open'];
+  sidebar.style.display = "none";
 
   // Initialize data
   summary_db = await Utility.load_summary_db();
@@ -444,5 +444,5 @@ document.addEventListener('DOMContentLoaded', async function () {
   pdb_inspect_button.addEventListener('click', () => Event.load_pdb());
 
   // Pre-load data
-  Event.load_pdb({ 'pdbid': 'CGG_mean', 'chainid': 'H', 'metric': 'all_metrics' });
+  Event.load_pdb({ 'pdbid': 'CGG', 'chainid': 'ALL', 'metric': 'all_metrics' });
 });
